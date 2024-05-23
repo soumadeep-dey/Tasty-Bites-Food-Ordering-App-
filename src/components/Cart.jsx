@@ -6,7 +6,7 @@ import CartItem from "./CartItem";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const [activeCart, setActiveCart] = useState(false);
+  const [activeCart, setActiveCart] = useState(true);
 
   const cartItems = useSelector((state) => state.cart.cart);
 
@@ -24,7 +24,24 @@ const Cart = () => {
             onClick={() => setActiveCart(!activeCart)}
           />
         </div>
-        <CartItem />
+        {cartItems.length === 0 ? (
+          <h2 className="text-center text-xl font-semibold text-gray-800 mt-2">
+            Your cart is empty
+          </h2>
+        ) : (
+          cartItems.map((item) => {
+            return (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                price={item.price}
+                img={item.img}
+                quantity={item.quantity}
+              />
+            );
+          })
+        )}
         <div className="absolute bottom-0">
           <h3 className="font-semibold text-gray-800">Items: </h3>
           <h3 className="font-semibold text-gray-800">Total Amount: </h3>
@@ -35,7 +52,7 @@ const Cart = () => {
         </div>
       </div>
       <FaShoppingCart
-        className="rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 hover:text-green-500"
+        className={`rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 hover:text-green-500`}
         onClick={() => setActiveCart(!activeCart)}
       />
     </>
