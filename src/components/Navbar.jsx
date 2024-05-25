@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="flex gap-2 md: justify-center">
         <img
           // src="/src/assets/Tasty Bites logo-modified.png"
-          src="/src/assets/Tasty Bites logo-modified.png"
+          src="/src/assets/Tasty Bites logo.png"
           alt="logo.png"
           className=" w-12 h-12 mix-blend-multiply"
         />
