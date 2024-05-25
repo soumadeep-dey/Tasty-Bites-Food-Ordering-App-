@@ -24,9 +24,14 @@ const FoodCard = ({
       />
       <div className="text-sm flex justify-between">
         <h2>{name}</h2>
-        <span className="text-green-500">₹{price}</span>
+        <span className="text-green-500 ml-2">₹{price}</span>
       </div>
-      <p className="text-sm font-normal">{desc.slice(0, 60)}..</p>
+      <div className="h-[80px] mb-2">
+        <p className="text-sm font-normal">
+          {desc.slice(0, 80)}
+          <b className="text-gray-600">...read more</b>
+        </p>
+      </div>
       <div className="flex justify-between">
         <span className="flex justify-center items-center">
           <FaStar className="mr-1 text-yellow-400" />
