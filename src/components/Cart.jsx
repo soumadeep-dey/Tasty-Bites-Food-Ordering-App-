@@ -5,7 +5,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import CartItem from "./CartItem";
 import { useSelector } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 const Cart = () => {
+  const navigate = useNavigate();
+
   const [activeCart, setActiveCart] = useState(false);
 
   const cartItems = useSelector((state) => state.cart.cart);
@@ -19,6 +23,10 @@ const Cart = () => {
     (total, item) => (total += item.price * item.quantity),
     0
   );
+
+  const handleCheckout = () => {
+    cartItems.length !== 0 && navigate("/success");
+  };
 
   return (
     <>
@@ -60,14 +68,18 @@ const Cart = () => {
             Total Amount: {totalPrice}
           </h3>
           <hr className="w-[90vw] lg:w-[18vw] my-2" />
-          <button className="bg-green-500 text-white font-bold px-3 py-2 rounded-lg w-[90vw] lg:w-[18vw] mb-5">
+          <button
+            className="bg-green-500 text-white font-bold px-3 py-2 rounded-lg w-[90vw] lg:w-[18vw] mb-5"
+            onClick={() => navigate("/success")}
+          >
             Checkout
           </button>
         </div>
       </div>
       <FaShoppingCart
         className={`rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 hover:text-green-500 ${
-          totalQuantity > 0 && "animate-bounce delay-500 transition-all"
+          totalQuantity > 0 &&
+          "animate-bounce delay-500 transition-all text-green-500"
         }`}
         onClick={() => setActiveCart(!activeCart)}
       />
