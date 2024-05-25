@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="flex flex-col md:flex-row justify-between mx-6 py-3 mb-6">
       <div className="flex gap-2 md: justify-center">
         <img
-          src="/src/assets/logo.png"
+          src="/logo.png"
           alt="logo.png"
           className=" w-12 h-12 mix-blend-multiply"
         />
