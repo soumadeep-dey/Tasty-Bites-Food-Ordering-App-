@@ -9,13 +9,18 @@ const FoodItems = () => {
 
   const selectedCategory = useSelector((state) => state.category.category);
 
+  const search = useSelector((state) => state.search.search);
+
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
 
       <div className="flex flex-wrap gap-10 justify-center lg:justify-start mx-6 my-10">
         {FoodData.filter((item) =>
-          selectedCategory === "All" ? item : selectedCategory === item.category
+          selectedCategory === "All"
+            ? item.name.toLowerCase().includes(search)
+            : selectedCategory === item.category &&
+              item.name.toLowerCase().includes(search)
         ).map((food) => (
           <FoodCard
             key={food.id}

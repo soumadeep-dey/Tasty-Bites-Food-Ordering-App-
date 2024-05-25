@@ -4,13 +4,13 @@ import { setCategory } from "../redux/slices/CategorySlice.js";
 import { useDispatch, useSelector } from "react-redux";
 
 const CategoryMenu = () => {
-  const [categories, setCategories] = useState(["All"]);
+  const [allCategories, setAllCategories] = useState(["All"]);
 
   const getUniqueCategories = () => {
     const uniqueCategories = [
       ...new Set(FoodData.map((item) => item.category)),
     ];
-    setCategories([...categories, ...uniqueCategories]);
+    setAllCategories([...allCategories, ...uniqueCategories]);
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const CategoryMenu = () => {
     <div className="mx-6">
       <h3 className="text-xl font-semibold">Find the best food</h3>
       <div className="my-5 flex gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden">
-        {categories.map((category, index) => (
+        {allCategories.map((category, index) => (
           <button
             key={index}
             className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-green-500 hover:text-white ${
