@@ -1,5 +1,9 @@
 # Tasty Bites
 
+![React.js](https://img.shields.io/badge/Frontend-React.js-61DAFB) ![redux](https://img.shields.io/badge/State_management-Redux_Toolkit-6e4ea6) ![React Router](https://img.shields.io/badge/Routing-React_Router-CA4245) ![Tailwind CSS](https://img.shields.io/badge/CSS_framework-Tailwind_CSS-007FFF) ![Node.js](https://img.shields.io/badge/JS_Env-Node.js-5FA04E)
+
+🔗 _[Tasty Bites](https://tasty-bites-sd.vercel.app/)_
+
 Welcome to **Tasty Bites**, a food ordering web application crafted with React.js, Vite, Tailwind CSS, Redux Toolkit, React Router, and React Router DOM. This app is designed to provide a seamless and enjoyable experience for users while offering an engaging building process for developers.
 
 ## Features
