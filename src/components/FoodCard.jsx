@@ -24,7 +24,10 @@ const FoodCard = ({
       />
       <div className="text-sm flex justify-between">
         <h2>{name}</h2>
-        <span className="text-green-500 ml-2">₹{price}</span>
+        <span className="text-green-500 ml-2">
+          <span style={{ fontFamily: "Arial" }}>₹</span>
+          {price}
+        </span>
       </div>
       <div className="h-[80px] mb-2">
         <p className="text-sm font-normal">

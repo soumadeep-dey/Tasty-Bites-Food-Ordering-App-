@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const FoodItems = () => {
-  const handleToast = (name) => toast.success(`${name} added to cat`);
+  const handleToast = (name) => toast.success(`${name} added to cart`);
 
   const selectedCategory = useSelector((state) => state.category.category);
 

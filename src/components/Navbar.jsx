@@ -1,8 +1,30 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../redux/slices/SearchSlice.js";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
+import { useEffect, useState } from "react";
+import NavList from "./NavList.jsx";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const [toggleNav, setToggleNav] = useState(false);
+  const auth = useSelector((state) => state.auth.isAuth);
+  const user = useSelector((state) => state.auth.user);
+
+  const getUser = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_HOST_URL}/auth/get-user`,
+      { withCredentials: true }
+    );
+    const data = await res.data;
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <nav className="flex flex-col md:flex-row justify-between mx-6 py-3 mb-6">
@@ -25,6 +47,20 @@ const Navbar = () => {
           onChange={(e) => dispatch(setSearch(e.target.value.toLowerCase()))}
         />
       </div>
+
+      <GiHamburgerMenu
+        className={`absolute top-5 right-5 lg:right-8 lg:top-6 text-2xl text-gray-600 cursor-pointer ${
+          toggleNav && "hidden"
+        } transition-all ease-in-out duration-500`}
+        onClick={() => setToggleNav(true)}
+      />
+      <MdClose
+        className={`absolute top-5 right-5 lg:right-8 lg:top-6 text-2xl text-gray-600 cursor-pointer ${
+          !toggleNav && "hidden"
+        } transition-all ease-in-out duration-500`}
+        onClick={() => setToggleNav(false)}
+      />
+      <NavList toggleNav={toggleNav} setToggleNav={setToggleNav} auth={auth} />
     </nav>
   );
 };
